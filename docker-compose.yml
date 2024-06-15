@@ -14,6 +14,8 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     expose:
       - 3306
+    networks:
+      - wordpress_net
 
   wordpress:
     image: wordpress:latest
@@ -28,7 +30,16 @@ services:
       - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
       - WORDPRESS_DB_NAME=${MYSQL_DATABASE_NAME}
     volumes:
+      - wordpress_data:/var/www/html
+      - ./.well-known:/var/www/html/.well-known
       - ./config/php.ini:/usr/local/etc/php/conf.d/uploads.ini
+    networks:
+      - wordpress_net
 
 volumes:
   db_data:
+  wordpress_data:
+
+networks:
+  wordpress_net:
+    driver: bridge
