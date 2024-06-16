@@ -20,7 +20,6 @@ services:
     volumes:
       - wp_files:/var/www/html
       - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-      - ./backup:/var/www/html/wp-content/updraft
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=${MYSQL_USER}
