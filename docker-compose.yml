@@ -11,7 +11,6 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   wordpress:
     image: wordpress:6-fpm-alpine
@@ -20,6 +19,7 @@ services:
       - db
     volumes:
       - wp_files:/var/www/html
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=${MYSQL_USER}
