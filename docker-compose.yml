@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   db:
-    image: mariadb
+    image: mariadb:11
     container_name: wp_mariadb
     restart: always
     environment:
@@ -11,8 +11,9 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
-  wordpress-fpm:
+  wordpress:
     image: wordpress:6-fpm-alpine
     container_name: wordpress
     links:
@@ -29,7 +30,7 @@ services:
     image: nginx:alpine
     container_name: wp-nginx
     depends_on:
-      - wordpress-fpm
+      - wordpress
     ports:
       - 80:80    # http
       - 443:443   # https
