@@ -1,0 +1,2 @@
+2024/06/16 11:01:23 [error] 31#31: *3 open() "/var/www/html404" failed (2: No such file or directory), client: 192.168.16.1, server: $host, request: "GET /wp-admin/ HTTP/2.0", host: "localhost:8443"
+2024/06/16 11:01:25 [error] 31#31: *3 open() "/var/www/html404" failed (2: No such file or directory), client: 192.168.16.1, server: $host, request: "GET /wp-admin/ HTTP/2.0", host: "localhost:8443"

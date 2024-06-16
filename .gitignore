@@ -2,3 +2,5 @@
 html
 database
 .env
+logs
+ssl
